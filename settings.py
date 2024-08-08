@@ -4,7 +4,7 @@ import glm
 import math
 
 # OpenGL settings
-MAJOR_VER, MINOR_VER = 3, 3
+MAJOR_VER, MINOR_VER = 4, 4
 DEPTH_SIZE = 24
 NUM_SAMPLES = 1  # antialiasing
 
