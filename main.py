@@ -1,12 +1,11 @@
-from settings import WIN_RES
-from numba import njit, sys
-import numpy as np
-import math
+from settings import *
 import moderngl as mgl
 import pygame as pg
+import sys
 
 class VoxelEngine:
     def __init__(self):
+        pg.init()
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MAJOR_VERSION, 3)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
@@ -27,11 +26,12 @@ class VoxelEngine:
 
     def update(self):
         self.delta_time = self.clock.tick()
-        self.time = pg.time.get_ticks(f'{self.clock.get_fps() :.0f}')
+        self.time = pg.time.get_ticks() * 0.001
+        pg.display.set_caption(f'{self.clock.get_fps() :.0f}')
 
 
     def render(self):
-        self.ctx.clear()
+        self.ctx.clear(color=BG_COLOR)
         pg.display.flip()
 
 
@@ -52,4 +52,4 @@ class VoxelEngine:
 
 if __name__ == '__main__':
     app = VoxelEngine()
-    app.run
+    app.run()
